@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var rotation: Double = 0
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button(action: {
+            self.rotation = (self.rotation < 360) ? self.rotation + 60 : 0
+        }, label: {
+            Text("Click to Rotate")
+                .rotationEffect(.degrees(rotation))
+                .animation(.linear)
+        })
+        .foregroundColor(.secondary)
     }
 }
 
